@@ -1,4 +1,8 @@
 
+
+
+
+
 /*
 Copyright IBM Corp 2016 All Rights Reserved.
 
@@ -20,6 +24,7 @@ import (
 	"strconv"		
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 
+	
 )
 
 // SimpleChaincode example simple Chaincode implementation
@@ -53,7 +58,8 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	Bval, err = strconv.Atoi(args[3])
 	if err != nil {
 		return nil, errors.New("Expecting integer value for asset holding")
-	}	fmt.Printf("Aval = %d, Bval = %d\n", Aval, Bval)
+	}	
+	fmt.Printf("Aval = %d, Bval = %d\n", Aval, Bval)
 
 	// Write the state to the ledger
 	err = stub.PutState(A, []byte(strconv.Itoa(Aval)))
