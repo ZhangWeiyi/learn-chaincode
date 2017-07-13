@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
+
 )
 
 // SimpleChaincode example simple Chaincode implementation
@@ -36,10 +37,12 @@ func main() {
 
 // Init resets all the things
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+	var err2 error
+	var Aval int
 	if len(args) != 1 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
-
+	Aval, err2 = strconv.Atoi(args[0])
 	err := stub.PutState("This is a test", []byte(args[0]))
 	if err != nil {
 		return nil, err
