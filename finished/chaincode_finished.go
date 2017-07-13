@@ -43,6 +43,9 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
 	Aval, err2 = strconv.Atoi(args[0])
+	fmt.Printf("Aval = %d", Aval)
+	if err2 !=nil {
+	}
 	err := stub.PutState("This is a test", []byte(args[0]))
 	if err != nil {
 		return nil, err
