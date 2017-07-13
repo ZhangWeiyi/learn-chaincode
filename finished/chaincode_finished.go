@@ -17,7 +17,8 @@ package main
 import (
 	"errors"
 	"fmt"
-	"strconv"	"github.com/hyperledger/fabric/core/chaincode/shim"
+	//"strconv"	
+	"github.com/hyperledger/fabric/core/chaincode/shim"
 
 )
 
@@ -34,7 +35,9 @@ func main() {
 
 // Init resets all the things
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
-	
+	if len(args) != 1 {
+		return nil, errors.New("Incorrect number of arguments. Expecting 1")
+	}
 
 	err := stub.PutState("This is a test", []byte(args[0]))
 	if err != nil {
